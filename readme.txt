@@ -19,10 +19,6 @@ This code is released under the GPL v2, see license.txt for details.
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
 1. Extract the archive file into your plugins directory in the posts-by-type-access folder.
 2. Activate the plugin in the Plugin options.
 3. Customize the settings from the Options panel, if desired.
