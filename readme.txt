@@ -3,6 +3,8 @@ Contributors: GregRoss
 Tags: admin
 Requires at least: 3.0.0
 Tested up to: 3.3.1
+Author URI: http://toolstack.com
+Plugin URI: http://toolstack.com/PostsByTypeAccess
 Stable tag: trunk
 
 Adds a link to Drafts, posted and scheduled items under the Posts, Pages, and other custom post type sections in the admin menu.
@@ -37,10 +39,10 @@ Don't have any to add at this time.
 == Changelog ==
 
 = 1.0 =
-* Inital release.
+* Initial release.
 
 == Upgrade Notice ==
 
 = 1.0 =
-Inital release.
+Initial release.
 
