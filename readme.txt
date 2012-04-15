@@ -1,7 +1,7 @@
 === Posts by Type Access ===
 Contributors: GregRoss
 Tags: admin
-Requires at least: 3.0.0
+Requires at least: 3.1.0
 Tested up to: 3.3.1
 Author URI: http://toolstack.com
 Plugin URI: http://toolstack.com/PostsByTypeAccess
