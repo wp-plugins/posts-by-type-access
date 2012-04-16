@@ -113,6 +113,8 @@ function posts_by_type_access_admin_page()
 		if( !isset( $_POST['posts_by_type_access']['zeros'] ) ) { $_POST['posts_by_type_access']['zeros'] = 0; }
 			
 		update_option( 'posts_by_type_access', $_POST['posts_by_type_access'] );
+		
+		print "<div id='setting-error-settings_updated' class='updated settings-error'><p><strong>Settings saved.</strong></p></div>\n";
 		}
 
 		$options = get_option( 'posts_by_type_access' );
@@ -122,8 +124,8 @@ function posts_by_type_access_admin_page()
 <div class="wrap">
 	<form method="post">
 	
-		<fieldset style="border:1px solid #cecece;padding:15px" >
-			<legend><h2>Posts by Type Access Options</h2></legend>
+		<fieldset style="border:1px solid #cecece;padding:15px; margin-top:25px" >
+			<legend><span style="font-size: 24px; font-weight: 700;">Posts by Type Access Options</span></legend>
 
 			<div><input name="posts_by_type_access[published]" type="checkbox" id="posts_by_type_access_published" value="1" <?php checked('1', $options['published']); ?> /> <?php _e('Add published link to menus'); ?></div>
 
