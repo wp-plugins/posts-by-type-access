@@ -122,28 +122,36 @@ function posts_by_type_access_admin_page()
 	//***** Start HTML
 	?>
 <div class="wrap">
-	<form method="post">
 	
-		<fieldset style="border:1px solid #cecece;padding:15px; margin-top:25px" >
-			<legend><span style="font-size: 24px; font-weight: 700;">Posts by Type Access Options</span></legend>
+	<fieldset style="border:1px solid #cecece;padding:15px; margin-top:25px" >
+		<legend><span style="font-size: 24px; font-weight: 700;">Posts by Type Access Options</span></legend>
+		<form method="post">
 
-			<div><input name="posts_by_type_access[published]" type="checkbox" id="posts_by_type_access_published" value="1" <?php checked('1', $options['published']); ?> /> <?php _e('Add published link to menus'); ?></div>
+				<div><input name="posts_by_type_access[published]" type="checkbox" id="posts_by_type_access_published" value="1" <?php checked('1', $options['published']); ?> /> <?php _e('Add published link to menus'); ?></div>
 
-			<div><input name="posts_by_type_access[scheduled]" type="checkbox" id="posts_by_type_access_scheduled" value="1" <?php checked('1', $options['scheduled']); ?> /> <?php _e('Add scheduled link to menus'); ?></div>
+				<div><input name="posts_by_type_access[scheduled]" type="checkbox" id="posts_by_type_access_scheduled" value="1" <?php checked('1', $options['scheduled']); ?> /> <?php _e('Add scheduled link to menus'); ?></div>
 
-			<div><input name="posts_by_type_access[drafts]" type="checkbox" id="posts_by_type_access_drafts" value="1" <?php checked('1', $options['drafts']); ?> /> <?php _e('Add drafts link to menus'); ?></div>
+				<div><input name="posts_by_type_access[drafts]" type="checkbox" id="posts_by_type_access_drafts" value="1" <?php checked('1', $options['drafts']); ?> /> <?php _e('Add drafts link to menus'); ?></div>
 
-			<div>&nbsp;</div>
-			
-			<div><input name="posts_by_type_access[numbers]" type="checkbox" id="posts_by_type_access_numbers" value="1" <?php checked('1', $options['numbers']); ?> /> <?php _e('Show number of posts to the left of the menu items'); ?></div>
-			
-			<div style="margin-left: 20px;"><input name="posts_by_type_access[zeros]" type="checkbox" id="posts_by_type_access_zeros" value="1" <?php checked('1', $options['zeros']); ?> /> <?php _e('Show zeros when no post items'); ?></div>
-			
-		</fieldset>
-			
-		<div class="submit"><input type="submit" name="info_update" value="<?php _e('Update Options') ?> &raquo;" /></div>
+				<div>&nbsp;</div>
+				
+				<div><input name="posts_by_type_access[numbers]" type="checkbox" id="posts_by_type_access_numbers" value="1" <?php checked('1', $options['numbers']); ?> /> <?php _e('Show number of posts to the left of the menu items'); ?></div>
+				
+				<div style="margin-left: 20px;"><input name="posts_by_type_access[zeros]" type="checkbox" id="posts_by_type_access_zeros" value="1" <?php checked('1', $options['zeros']); ?> /> <?php _e('Show zeros when no post items'); ?></div>
+				
+			<div class="submit"><input type="submit" name="info_update" value="<?php _e('Update Options') ?> &raquo;" /></div>
+		</form>
 		
-	</form>
+	</fieldset>
+	
+	<fieldset style="border:1px solid #cecece;padding:15px; margin-top:25px" >
+		<legend><span style="font-size: 24px; font-weight: 700;">About</span></legend>
+		<p>Posts By Type Access Version 1.1</p>
+		<p>by Greg Ross</p>
+		<p>&nbsp;</p>
+		<p>Licenced under the <a href="http://www.gnu.org/licenses/gpl-2.0.html" target=_blank>GPL Version 2</a></p>
+		<p>Visit the plug-in site at <a href="http://ToolStack.com/PostsByTypeAccess" target=_blank>ToolStack.com</a>!</p>
+</fieldset>
 </div>
 	<?php
 	//***** End HTML
