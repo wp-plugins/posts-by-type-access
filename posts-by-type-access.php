@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Posts by Type Access
-Version: 1.0
+Version: 1.1
 Plugin URI: 
 Author: Greg Ross
 Author URI: 
