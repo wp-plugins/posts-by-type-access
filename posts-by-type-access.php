@@ -101,7 +101,7 @@ function posts_by_type_access()
 
 function posts_by_type_access_admin_page()
 	{
-	if( $_POST['posts_by_type_access'] ) 
+	if( array_key_exists('posts_by_type_access', $_POST) )
 		{
 		if( $_POST['posts_by_type_access']['numbers'] != 1 )
 			$_POST['posts_by_type_access']['zeros'] = 0;
@@ -159,7 +159,7 @@ function posts_by_type_access_admin_page()
 	
 function posts_by_type_admin()
 {
-	add_options_page( 'Posts by Type Access', 'Posts by Type Access', 9, basename( __FILE__ ), 'posts_by_type_access_admin_page');
+	add_options_page( 'Posts by Type Access', 'Posts by Type Access', 'manage_options', basename( __FILE__ ), 'posts_by_type_access_admin_page');
 }
 
 if ( is_admin() )
