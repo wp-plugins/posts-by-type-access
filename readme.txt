@@ -2,10 +2,10 @@
 Contributors: GregRoss
 Tags: admin
 Requires at least: 3.1.0
-Tested up to: 3.8.0
+Tested up to: 3.8.1
 Author URI: http://toolstack.com
 Plugin URI: http://toolstack.com/PostsByTypeAccess
-Stable tag: 1.1
+Stable tag: 1.2
 
 Adds a link to Drafts, posted and scheduled items under the Posts, Pages, and other custom post type sections in the admin menu.
 
@@ -37,6 +37,11 @@ Don't have any to add at this time.
 2. A screenshot of the options menu.
 
 == Changelog ==
+= 1.2 =
+* Added: Square bracket option for post count.
+* Updated: Minor visual tweaks to the options page.
+* Updated: Screen shots.
+* Updated: Replaced deprecated use of numeric access type.
 
 = 1.1 =
 * Minor update to include a notice that settings have been saved.
@@ -47,9 +52,6 @@ Don't have any to add at this time.
 
 == Upgrade Notice ==
 
-= 1.1 =
-Minor update.
-
-= 1.0 =
-Initial release.
+= 1.2 =
+None.
 

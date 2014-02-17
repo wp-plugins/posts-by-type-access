@@ -1,29 +1,31 @@
 <?php
 /*
 Plugin Name: Posts by Type Access
-Version: 1.1
+Version: 1.2
 Plugin URI: 
 Author: Greg Ross
-Author URI: 
+Author URI: http://toolstack.com/
 Description: Adds a link to Drafts, posted and scheduled items under the Posts, Pages, and other custom post type sections in the admin menu.
 
 Compatible with WordPress 3+.
 
 Read the accompanying readme.txt file for instructions and documentation.
 
-Copyright (c) 2012 by Greg Ross
+Copyright (c) 2012-14 by Greg Ross
 
 This software is released under the GPL v2.0, see license.txt for details
 */
 
-define( 'PBTA_VER', '1.0' );
+define( 'PBTA_VER', '1.2' );
 
 function posts_by_type_access() 
 	{
 	$post_types = (array)get_post_types( array( 'show_ui' => true ), 'object' );
 
 	$options = get_option( 'posts_by_type_access' );
-	
+
+	$brackets = array( 'open' => '(', 'close' => ')' );
+
 	if( $options['version'] != PBTA_VER )
 		{
 		$options['version'] = PBTA_VER;
@@ -35,7 +37,9 @@ function posts_by_type_access()
 
 		update_option( 'posts_by_type_access', $options );
 		}
-	
+
+	if( $options['square'] == 1 ) { $brackets = array( 'open' => '[', 'close' => ']' ); }
+		
 	foreach( $post_types as $post_type ) 
 		{
 		$name = $post_type->name;
@@ -55,7 +59,7 @@ function posts_by_type_access()
 				{
 				if( $options['zeros'] == 1 || $num_posts->publish > 0 )
 					{
-					$menu_name .= " (" . number_format_i18n( $num_posts->publish ) . ")";
+					$menu_name .= " " . $brackets['open'] . number_format_i18n( $num_posts->publish ) . $brackets['close'];
 					}
 				}
 
@@ -72,7 +76,7 @@ function posts_by_type_access()
 				{
 				if( $options['zeros'] == 1 || $num_posts->future > 0 )
 					{
-					$menu_name .= " (" . number_format_i18n( $num_posts->future ) . ")";
+					$menu_name .= " " . $brackets['open'] . number_format_i18n( $num_posts->future ) . $brackets['close'];
 					}
 				}
 
@@ -90,7 +94,7 @@ function posts_by_type_access()
 				{
 				if( $options['zeros'] == 1 || $num_posts->draft > 0 )
 					{
-					$menu_name .= " (" . number_format_i18n( $num_posts->draft ) . ")";
+					$menu_name .= " " . $brackets['open'] . number_format_i18n( $num_posts->draft ) . $brackets['close'];
 					}
 				}
 
@@ -111,6 +115,7 @@ function posts_by_type_access_admin_page()
 		if( !isset( $_POST['posts_by_type_access']['drafts'] ) ) { $_POST['posts_by_type_access']['drafts'] = 0; }
 		if( !isset( $_POST['posts_by_type_access']['numbers'] ) ) { $_POST['posts_by_type_access']['numbers'] = 0; }
 		if( !isset( $_POST['posts_by_type_access']['zeros'] ) ) { $_POST['posts_by_type_access']['zeros'] = 0; }
+		if( !isset( $_POST['posts_by_type_access']['square'] ) ) { $_POST['posts_by_type_access']['square'] = 0; }
 			
 		update_option( 'posts_by_type_access', $_POST['posts_by_type_access'] );
 		
@@ -138,19 +143,23 @@ function posts_by_type_access_admin_page()
 				<div><input name="posts_by_type_access[numbers]" type="checkbox" id="posts_by_type_access_numbers" value="1" <?php checked('1', $options['numbers']); ?> /> <?php _e('Show number of posts to the left of the menu items'); ?></div>
 				
 				<div style="margin-left: 20px;"><input name="posts_by_type_access[zeros]" type="checkbox" id="posts_by_type_access_zeros" value="1" <?php checked('1', $options['zeros']); ?> /> <?php _e('Show zeros when no post items'); ?></div>
+
+				<div style="margin-left: 20px;"><input name="posts_by_type_access[square]" type="checkbox" id="posts_by_type_access_square" value="1" <?php checked('1', $options['square']); ?> /> <?php _e('Use square brackets'); ?></div>
 				
-			<div class="submit"><input type="submit" name="info_update" value="<?php _e('Update Options') ?> &raquo;" /></div>
+			<div class="submit"><input type="submit" class="button button-primary" name="info_update" value="<?php _e('Update Options') ?>" /></div>
 		</form>
 		
 	</fieldset>
 	
 	<fieldset style="border:1px solid #cecece;padding:15px; margin-top:25px" >
 		<legend><span style="font-size: 24px; font-weight: 700;">About</span></legend>
-		<p>Posts By Type Access Version 1.1</p>
-		<p>by Greg Ross</p>
+		<h2><?php echo __('Posts By Type Access Version') . ' ' . PBTA_VER;?></h2>
+		<p><?php echo __('by');?> Greg Ross</p>
 		<p>&nbsp;</p>
-		<p>Licenced under the <a href="http://www.gnu.org/licenses/gpl-2.0.html" target=_blank>GPL Version 2</a></p>
-		<p>Visit the plug-in site at <a href="http://ToolStack.com/PostsByTypeAccess" target=_blank>ToolStack.com</a>!</p>
+		<p><?php printf(__('Licenced under the %sGPL Version 2%s'), '<a href="http://www.gnu.org/licenses/gpl-2.0.html" target=_blank>', '</a>');?></p>
+		<p><?php printf(__('To find out more, please visit the %sWordPress Plugin Directory page%s or the plugin home page on %sToolStack.com%s'), '<a href="http://wordpress.org/plugins/posts-by-type-access/" target=_blank>', '</a>', '<a href="http://toolstack.com/postsbytypeaccess" target=_blank>', '</a>');?></p>
+		<p>&nbsp;</p>
+		<p><?php printf(__("Don't forget to %srate and review%s it too!"), '<a href="http://wordpress.org/support/view/plugin-reviews/posts-by-type-access" target=_blank>', '</a>');?></p>
 </fieldset>
 </div>
 	<?php
