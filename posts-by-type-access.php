@@ -26,6 +26,8 @@ function posts_by_type_access()
 
 	$brackets = array( 'open' => '(', 'close' => ')' );
 
+	if( !array_key_exists( 'version', $options ) ) { $options['version'] = ''; }
+	
 	if( $options['version'] != PBTA_VER )
 		{
 		$options['version'] = PBTA_VER;
@@ -105,10 +107,17 @@ function posts_by_type_access()
 
 function posts_by_type_access_admin_page()
 	{
-	if( array_key_exists('posts_by_type_access', $_POST) )
+	if( array_key_exists( 'posts_by_type_access', $_POST ) ) 
 		{
+		if( array_key_exists( 'numbers', $_POST ) )
+			{
+			$_POST['posts_by_type_access']['numbers'] = 1;
+			}
+		
 		if( $_POST['posts_by_type_access']['numbers'] != 1 )
+			{
 			$_POST['posts_by_type_access']['zeros'] = 0;
+			}
 
 		if( !isset( $_POST['posts_by_type_access']['published'] ) ) { $_POST['posts_by_type_access']['published'] = 0; }
 		if( !isset( $_POST['posts_by_type_access']['scheduled'] ) ) { $_POST['posts_by_type_access']['scheduled'] = 0; }
@@ -140,7 +149,7 @@ function posts_by_type_access_admin_page()
 
 				<div>&nbsp;</div>
 				
-				<div><input name="posts_by_type_access[numbers]" type="checkbox" id="posts_by_type_access_numbers" value="1" <?php checked('1', $options['numbers']); ?> /> <?php _e('Show number of posts to the left of the menu items'); ?></div>
+				<div><input name="posts_by_type_access[numbers]" type="checkbox" id="posts_by_type_access_numbers" value="1" <?php checked('1', $options['numbers']); ?> /> <?php _e('Show number of posts to the right of the menu items'); ?></div>
 				
 				<div style="margin-left: 20px;"><input name="posts_by_type_access[zeros]" type="checkbox" id="posts_by_type_access_zeros" value="1" <?php checked('1', $options['zeros']); ?> /> <?php _e('Show zeros when no post items'); ?></div>
 
