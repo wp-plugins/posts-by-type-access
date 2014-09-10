@@ -2,7 +2,7 @@
 Contributors: GregRoss
 Tags: admin
 Requires at least: 3.1.0
-Tested up to: 3.9
+Tested up to: 4.0
 Author URI: http://toolstack.com
 Plugin URI: http://toolstack.com/PostsByTypeAccess
 Stable tag: 1.2
@@ -11,8 +11,8 @@ Adds a link to Drafts, posted and scheduled items under the Posts, Pages, and ot
 
 == Description ==
 
-This plugin adds menu items to the admin menu in Wordpress to allow one click access to the drafts, posted and scheduled items
-under posts, pages and other post types.
+This plugin adds menu items to the admin menu in Wordpress to allow one click access to the drafts, posted, scheduled items and 
+categories under posts, pages and other post types.
 
 Included is a administration menu to allow for options to be set, including which types of posts are added to the menu and how
 the number of posts in each catagory are displayed in the menu.
@@ -37,6 +37,10 @@ Don't have any to add at this time.
 2. A screenshot of the options menu.
 
 == Changelog ==
+= 2.0 -
+* Added: Support for categories.
+* Updated: Screen shots.
+
 = 1.2 =
 * Added: Square bracket option for post count.
 * Updated: Minor visual tweaks to the options page.
@@ -52,6 +56,6 @@ Don't have any to add at this time.
 
 == Upgrade Notice ==
 
-= 1.2 =
+= 2.0 =
 None.
 
