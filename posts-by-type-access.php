@@ -102,11 +102,37 @@ function posts_by_type_access()
 
 			add_submenu_page( $path, __( 'Drafts' ), $menu_name, $post_type->cap->edit_posts, "edit.php?post_type=$name&post_status=draft" );
 			}
+			
+		$args = array( 'orderby' => 'name', 'order' => 'ASC' );
+		$categories = get_categories($args);
+
+		foreach($categories as $category) 
+			{ 
+			$option_name = 'catagory_' . $category->slug;
+			if( array_key_exists( $option_name, $options ) ) 
+				{
+				if( $options[$option_name] == true )
+					{
+					$menu_name = $category->name;
+					if( $options['numbers'] == 1 )
+						{
+						if( $options['zeros'] == 1 || $num_posts->draft > 0 )
+							{
+							$menu_name .= " " . $brackets['open'] . number_format_i18n( $category->count ) . $brackets['close'];
+							}
+						}
+					add_submenu_page( $path, $category->name, $menu_name, $post_type->cap->edit_posts, "edit.php?post_type=$name&post_status=all&cat=" . $category->cat_ID );
+					}
+				}
+			}
 		}
 	}
 
 function posts_by_type_access_admin_page()
 	{
+	$args = array( 'orderby' => 'name', 'order' => 'ASC' );
+	$categories = get_categories($args);
+	
 	if( array_key_exists( 'posts_by_type_access', $_POST ) ) 
 		{
 		if( array_key_exists( 'numbers', $_POST ) )
@@ -146,6 +172,17 @@ function posts_by_type_access_admin_page()
 				<div><input name="posts_by_type_access[scheduled]" type="checkbox" id="posts_by_type_access_scheduled" value="1" <?php checked('1', $options['scheduled']); ?> /> <?php _e('Add scheduled link to menus'); ?></div>
 
 				<div><input name="posts_by_type_access[drafts]" type="checkbox" id="posts_by_type_access_drafts" value="1" <?php checked('1', $options['drafts']); ?> /> <?php _e('Add drafts link to menus'); ?></div>
+
+<?php
+	foreach($categories as $category) 
+		{ 
+		$option_name = 'catagory_' . $category->slug;
+		if( !array_key_exists( $option_name, $options ) ) { $options[$option_name] = ''; }
+		
+		echo '<div><input name="posts_by_type_access[' . $option_name . ']" type="checkbox" id="posts_by_type_access_' . $option_name . '" value="1"' . checked('1', $options[$option_name], false) . ' /> ' . __('Add') . ' "' . $category->name . '" ' . __('category link to the menus') . '</div>';
+		echo "\n\n";
+		}
+?>
 
 				<div>&nbsp;</div>
 				
