@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Posts by Type Access
-Version: 1.2
+Version: 2.0
 Plugin URI: 
 Author: Greg Ross
 Author URI: http://toolstack.com/
-Description: Adds a link to Drafts, posted and scheduled items under the Posts, Pages, and other custom post type sections in the admin menu.
+Description: Adds a link to drafts, posted, scheduled items and categories under the posts, pages, and other custom post type sections in the admin menu.
 
 Compatible with WordPress 3+.
 
@@ -16,7 +16,7 @@ Copyright (c) 2012-14 by Greg Ross
 This software is released under the GPL v2.0, see license.txt for details
 */
 
-define( 'PBTA_VER', '1.2' );
+define( 'PBTA_VER', '2.0' );
 
 function posts_by_type_access() 
 	{
