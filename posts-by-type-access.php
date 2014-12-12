@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Posts by Type Access
-Version: 2.0
+Version: 2.1
 Plugin URI: 
 Author: Greg Ross
 Author URI: http://toolstack.com/
@@ -16,10 +16,12 @@ Copyright (c) 2012-14 by Greg Ross
 This software is released under the GPL v2.0, see license.txt for details
 */
 
-define( 'PBTA_VER', '2.0' );
+define( 'PBTA_VER', '2.1' );
 
 function posts_by_type_access() 
 	{
+	GLOBAL $wpdb;
+	
 	$post_types = (array)get_post_types( array( 'show_ui' => true ), 'object' );
 
 	$options = get_option( 'posts_by_type_access' );
@@ -118,7 +120,8 @@ function posts_by_type_access()
 						{
 						if( $options['zeros'] == 1 || $num_posts->draft > 0 )
 							{
-							$menu_name .= " " . $brackets['open'] . number_format_i18n( $category->count ) . $brackets['close'];
+							$cat_count = $wpdb->get_var( "SELECT count(*) FROM {$wpdb->prefix}posts, {$wpdb->prefix}term_relationships WHERE {$wpdb->prefix}posts.ID = {$wpdb->prefix}term_relationships.object_id AND {$wpdb->prefix}posts.post_type = '{$name}' AND {$wpdb->prefix}term_relationships.term_taxonomy_id = '{$category->term_id}'" );
+							$menu_name .= " " . $brackets['open'] . number_format_i18n( $cat_count ) . $brackets['close'];
 							}
 						}
 					add_submenu_page( $path, $category->name, $menu_name, $post_type->cap->edit_posts, "edit.php?post_type=$name&post_status=all&cat=" . $category->cat_ID );

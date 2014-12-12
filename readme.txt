@@ -2,18 +2,18 @@
 Contributors: GregRoss
 Tags: admin
 Requires at least: 3.1.0
-Tested up to: 4.0
+Tested up to: 4.1
 Author URI: http://toolstack.com
 Plugin URI: http://toolstack.com/PostsByTypeAccess
-Stable tag: 2.0
+Stable tag: 2.1
 
 Adds a link to drafts, posted, scheduled items and categories under the posts, pages, and other custom post type sections in the admin menu.
 
 == Description ==
 
-This plugin adds menu items to the admin menu in Wordpress to allow one click access to the drafts, posted, scheduled items and categories under posts, pages and other post types.
+This plugin adds menu items to the admin menu in WordPress to allow one click access to the drafts, posted, scheduled items and categories under posts, pages and other post types.
 
-Included is a administration menu to allow for options to be set, including which types of posts are added to the menu and how the number of posts in each catagory are displayed in the menu.
+Included is a administration menu to allow for options to be set, including which types of posts are added to the menu and how the number of posts in each category are displayed in the menu.
 
 This code is released under the GPL v2, see license.txt for details.
 
@@ -25,9 +25,11 @@ This code is released under the GPL v2, see license.txt for details.
 
 == Frequently Asked Questions ==
 
-= Why is the category count incorrect? =
+= Why is the category count incorrect in version 2.0? =
 
 WordPress only counts published articles as being 'in' a category so any drafts you have will not be reflected in the category count.
+
+Version 2.1 replaced the built in WordPress function with a custom SQL query that properly reflects the category count for each post type and status of the posts.
 
 == Screenshots ==
 
@@ -35,7 +37,10 @@ WordPress only counts published articles as being 'in' a category so any drafts 
 2. A screenshot of the options menu.
 
 == Changelog ==
-= 2.0 -
+= 2.1 =
+* Updated: Replaced built in WordPress Category article counts with custom SQL code that provides correct counts.
+
+= 2.0 =
 * Added: Support for categories.
 * Updated: Screen shots.
 
@@ -54,6 +59,6 @@ WordPress only counts published articles as being 'in' a category so any drafts 
 
 == Upgrade Notice ==
 
-= 2.0 =
+= 2.1 =
 None.
 
