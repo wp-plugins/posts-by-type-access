@@ -111,16 +111,19 @@ function posts_by_type_access()
 		foreach($categories as $category) 
 			{ 
 			$option_name = 'catagory_' . $category->slug;
+			$cat_count = $wpdb->get_var( "SELECT count(*) FROM {$wpdb->prefix}posts, {$wpdb->prefix}term_relationships WHERE {$wpdb->prefix}posts.ID = {$wpdb->prefix}term_relationships.object_id AND {$wpdb->prefix}posts.post_type = '{$name}' AND {$wpdb->prefix}term_relationships.term_taxonomy_id = '{$category->term_id}'" );
+			
 			if( array_key_exists( $option_name, $options ) ) 
 				{
 				if( $options[$option_name] == true )
 					{
+					if( $options['hide_empty_cats'] == 1 && $cat_count == 0 ) { continue; }
+					
 					$menu_name = $category->name;
 					if( $options['numbers'] == 1 )
 						{
 						if( $options['zeros'] == 1 || $num_posts->draft > 0 )
 							{
-							$cat_count = $wpdb->get_var( "SELECT count(*) FROM {$wpdb->prefix}posts, {$wpdb->prefix}term_relationships WHERE {$wpdb->prefix}posts.ID = {$wpdb->prefix}term_relationships.object_id AND {$wpdb->prefix}posts.post_type = '{$name}' AND {$wpdb->prefix}term_relationships.term_taxonomy_id = '{$category->term_id}'" );
 							$menu_name .= " " . $brackets['open'] . number_format_i18n( $cat_count ) . $brackets['close'];
 							}
 						}
@@ -135,6 +138,7 @@ function posts_by_type_access_admin_page()
 	{
 	$args = array( 'orderby' => 'name', 'order' => 'ASC' );
 	$categories = get_categories($args);
+	$message = "";
 	
 	if( array_key_exists( 'posts_by_type_access', $_POST ) ) 
 		{
@@ -157,7 +161,7 @@ function posts_by_type_access_admin_page()
 			
 		update_option( 'posts_by_type_access', $_POST['posts_by_type_access'] );
 		
-		print "<div id='setting-error-settings_updated' class='updated settings-error'><p><strong>Settings saved.</strong></p></div>\n";
+		$message = "<div id='setting-error-settings_updated' class='updated settings-error'><p><strong>Settings saved.</strong></p></div>\n";
 		}
 
 		$options = get_option( 'posts_by_type_access' );
@@ -165,6 +169,7 @@ function posts_by_type_access_admin_page()
 	//***** Start HTML
 	?>
 <div class="wrap">
+	<?php echo $message;?>
 	
 	<fieldset style="border:1px solid #cecece;padding:15px; margin-top:25px" >
 		<legend><span style="font-size: 24px; font-weight: 700;">Posts by Type Access Options</span></legend>
@@ -189,6 +194,8 @@ function posts_by_type_access_admin_page()
 
 				<div>&nbsp;</div>
 				
+				<div><input name="posts_by_type_access[hide_empty_cats]" type="checkbox" id="posts_by_type_access_hide_empty_cats" value="1" <?php checked('1', $options['hide_empty_cats']); ?> /> <?php _e('Hide categories that do not have any posts in them.'); ?></div>
+
 				<div><input name="posts_by_type_access[numbers]" type="checkbox" id="posts_by_type_access_numbers" value="1" <?php checked('1', $options['numbers']); ?> /> <?php _e('Show number of posts to the right of the menu items'); ?></div>
 				
 				<div style="margin-left: 20px;"><input name="posts_by_type_access[zeros]" type="checkbox" id="posts_by_type_access_zeros" value="1" <?php checked('1', $options['zeros']); ?> /> <?php _e('Show zeros when no post items'); ?></div>
