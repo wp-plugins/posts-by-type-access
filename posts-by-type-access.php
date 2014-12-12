@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Posts by Type Access
-Version: 2.1
+Version: 2.2
 Plugin URI: 
 Author: Greg Ross
 Author URI: http://toolstack.com/
@@ -16,7 +16,7 @@ Copyright (c) 2012-14 by Greg Ross
 This software is released under the GPL v2.0, see license.txt for details
 */
 
-define( 'PBTA_VER', '2.1' );
+define( 'PBTA_VER', '2.2' );
 
 function posts_by_type_access() 
 	{

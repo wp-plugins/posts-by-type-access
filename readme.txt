@@ -5,7 +5,7 @@ Requires at least: 3.1.0
 Tested up to: 4.1
 Author URI: http://toolstack.com
 Plugin URI: http://toolstack.com/PostsByTypeAccess
-Stable tag: 2.1
+Stable tag: 2.2
 
 Adds a link to drafts, posted, scheduled items and categories under the posts, pages, and other custom post type sections in the admin menu.
 
@@ -37,6 +37,9 @@ Version 2.1 replaced the built in WordPress function with a custom SQL query tha
 2. A screenshot of the options menu.
 
 == Changelog ==
+= 2.2 =
+* Added: Option to hide categories that have no posts in them.
+
 = 2.1 =
 * Updated: Replaced built in WordPress Category article counts with custom SQL code that provides correct counts.
 
