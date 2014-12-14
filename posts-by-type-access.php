@@ -107,6 +107,7 @@ function posts_by_type_access()
 			
 		$args = array( 'orderby' => 'name', 'order' => 'ASC' );
 		$categories = get_categories($args);
+		if( !array_key_exists( 'hide_empty_cats', $options ) ) { $options['hide_empty_cats'] = false; }
 
 		foreach($categories as $category) 
 			{ 
