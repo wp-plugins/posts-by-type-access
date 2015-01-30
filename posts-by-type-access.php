@@ -26,6 +26,8 @@ function posts_by_type_access()
 
 	$options = get_option( 'posts_by_type_access' );
 
+	if( !is_array( $options ) ) { $options = array(); }
+	
 	$brackets = array( 'open' => '(', 'close' => ')' );
 
 	if( !array_key_exists( 'version', $options ) ) { $options['version'] = ''; }
