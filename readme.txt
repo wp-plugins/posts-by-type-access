@@ -2,7 +2,7 @@
 Contributors: GregRoss
 Tags: admin
 Requires at least: 3.1.0
-Tested up to: 4.1
+Tested up to: 4.2
 Author URI: http://toolstack.com
 Plugin URI: http://toolstack.com/PostsByTypeAccess
 Stable tag: 2.2
