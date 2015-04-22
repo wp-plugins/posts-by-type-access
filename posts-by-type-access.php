@@ -6,6 +6,8 @@ Plugin URI:
 Author: Greg Ross
 Author URI: http://toolstack.com/
 Description: Adds a link to drafts, posted, scheduled items and categories under the posts, pages, and other custom post type sections in the admin menu.
+Text Domain: posts-by-type-access
+Domain Path: /languages/
 
 Compatible with WordPress 3+.
 
@@ -60,7 +62,7 @@ function posts_by_type_access()
 			$post_status = null;
 			$post_status = get_post_status_object( 'publish' );
 
-			$menu_name = __( "Published" );
+			$menu_name = __( 'Published', 'post-by-type-access' );
 			if( $options['numbers'] == 1 )
 				{
 				if( $options['zeros'] == 1 || $num_posts->publish > 0 )
@@ -69,7 +71,7 @@ function posts_by_type_access()
 					}
 				}
 
-			add_submenu_page( $path, __( 'Published' ), $menu_name, $post_type->cap->edit_posts, "edit.php?post_type=$name&post_status=publish" );
+			add_submenu_page( $path, __( 'Published', 'post-by-type-access' ), $menu_name, $post_type->cap->edit_posts, "edit.php?post_type=$name&post_status=publish" );
 			}
 
 		if( $options['scheduled'] == 1 )
@@ -77,7 +79,7 @@ function posts_by_type_access()
 			$post_status = null;
 			$post_status = get_post_status_object( 'future' );
 
-			$menu_name = __( "Scheduled" );
+			$menu_name = __( 'Scheduled', 'post-by-type-access' );
 			if( $options['numbers'] == 1 )
 				{
 				if( $options['zeros'] == 1 || $num_posts->future > 0 )
@@ -86,7 +88,7 @@ function posts_by_type_access()
 					}
 				}
 
-			add_submenu_page( $path, __( 'Scheduled' ), $menu_name, $post_type->cap->edit_posts, "edit.php?post_type=$name&post_status=future" );
+			add_submenu_page( $path, __( 'Scheduled', 'post-by-type-access' ), $menu_name, $post_type->cap->edit_posts, "edit.php?post_type=$name&post_status=future" );
 			}
 
 		if( $options['drafts'] == 1 )
@@ -95,7 +97,7 @@ function posts_by_type_access()
 			$post_status = get_post_status_object( 'draft' );
 			$menu_name = sprintf( translate_nooped_plural( $post_status->label_count, $num_posts->draft ), number_format_i18n( $num_posts->draft ) );
 
-			$menu_name = __( "Drafts" );
+			$menu_name = __( 'Drafts', 'post-by-type-access' );
 			if( $options['numbers'] == 1 )
 				{
 				if( $options['zeros'] == 1 || $num_posts->draft > 0 )
@@ -104,7 +106,7 @@ function posts_by_type_access()
 					}
 				}
 
-			add_submenu_page( $path, __( 'Drafts' ), $menu_name, $post_type->cap->edit_posts, "edit.php?post_type=$name&post_status=draft" );
+			add_submenu_page( $path, __( 'Drafts', 'post-by-type-access' ), $menu_name, $post_type->cap->edit_posts, "edit.php?post_type=$name&post_status=draft" );
 			}
 			
 		$args = array( 'orderby' => 'name', 'order' => 'ASC' );
@@ -178,11 +180,11 @@ function posts_by_type_access_admin_page()
 		<legend><span style="font-size: 24px; font-weight: 700;">Posts by Type Access Options</span></legend>
 		<form method="post">
 
-				<div><input name="posts_by_type_access[published]" type="checkbox" id="posts_by_type_access_published" value="1" <?php checked('1', $options['published']); ?> /> <?php _e('Add published link to menus'); ?></div>
+				<div><input name="posts_by_type_access[published]" type="checkbox" id="posts_by_type_access_published" value="1" <?php checked('1', $options['published']); ?> /> <?php _e('Add published link to menus', 'post-by-type-access'); ?></div>
 
-				<div><input name="posts_by_type_access[scheduled]" type="checkbox" id="posts_by_type_access_scheduled" value="1" <?php checked('1', $options['scheduled']); ?> /> <?php _e('Add scheduled link to menus'); ?></div>
+				<div><input name="posts_by_type_access[scheduled]" type="checkbox" id="posts_by_type_access_scheduled" value="1" <?php checked('1', $options['scheduled']); ?> /> <?php _e('Add scheduled link to menus', 'post-by-type-access'); ?></div>
 
-				<div><input name="posts_by_type_access[drafts]" type="checkbox" id="posts_by_type_access_drafts" value="1" <?php checked('1', $options['drafts']); ?> /> <?php _e('Add drafts link to menus'); ?></div>
+				<div><input name="posts_by_type_access[drafts]" type="checkbox" id="posts_by_type_access_drafts" value="1" <?php checked('1', $options['drafts']); ?> /> <?php _e('Add drafts link to menus', 'post-by-type-access'); ?></div>
 
 <?php
 	foreach($categories as $category) 
@@ -190,35 +192,35 @@ function posts_by_type_access_admin_page()
 		$option_name = 'catagory_' . $category->slug;
 		if( !array_key_exists( $option_name, $options ) ) { $options[$option_name] = ''; }
 		
-		echo '<div><input name="posts_by_type_access[' . $option_name . ']" type="checkbox" id="posts_by_type_access_' . $option_name . '" value="1"' . checked('1', $options[$option_name], false) . ' /> ' . __('Add') . ' "' . $category->name . '" ' . __('category link to the menus') . '</div>';
+		echo '<div><input name="posts_by_type_access[' . $option_name . ']" type="checkbox" id="posts_by_type_access_' . $option_name . '" value="1"' . checked('1', $options[$option_name], false) . ' /> ' . sprintf( __('Add "%s" category link to the menus', 'post-by-type-access'), $category->name ) . '</div>';
 		echo "\n\n";
 		}
 ?>
 
 				<div>&nbsp;</div>
 				
-				<div><input name="posts_by_type_access[hide_empty_cats]" type="checkbox" id="posts_by_type_access_hide_empty_cats" value="1" <?php checked('1', $options['hide_empty_cats']); ?> /> <?php _e('Hide categories that do not have any posts in them.'); ?></div>
+				<div><input name="posts_by_type_access[hide_empty_cats]" type="checkbox" id="posts_by_type_access_hide_empty_cats" value="1" <?php checked('1', $options['hide_empty_cats']); ?> /> <?php _e('Hide categories that do not have any posts in them.', 'post-by-type-access'); ?></div>
 
-				<div><input name="posts_by_type_access[numbers]" type="checkbox" id="posts_by_type_access_numbers" value="1" <?php checked('1', $options['numbers']); ?> /> <?php _e('Show number of posts to the right of the menu items'); ?></div>
+				<div><input name="posts_by_type_access[numbers]" type="checkbox" id="posts_by_type_access_numbers" value="1" <?php checked('1', $options['numbers']); ?> /> <?php _e('Show number of posts to the right of the menu items', 'post-by-type-access'); ?></div>
 				
-				<div style="margin-left: 20px;"><input name="posts_by_type_access[zeros]" type="checkbox" id="posts_by_type_access_zeros" value="1" <?php checked('1', $options['zeros']); ?> /> <?php _e('Show zeros when no post items'); ?></div>
+				<div style="margin-left: 20px;"><input name="posts_by_type_access[zeros]" type="checkbox" id="posts_by_type_access_zeros" value="1" <?php checked('1', $options['zeros']); ?> /> <?php _e('Show zeros when no post items', 'post-by-type-access'); ?></div>
 
-				<div style="margin-left: 20px;"><input name="posts_by_type_access[square]" type="checkbox" id="posts_by_type_access_square" value="1" <?php checked('1', $options['square']); ?> /> <?php _e('Use square brackets'); ?></div>
+				<div style="margin-left: 20px;"><input name="posts_by_type_access[square]" type="checkbox" id="posts_by_type_access_square" value="1" <?php checked('1', $options['square']); ?> /> <?php _e('Use square brackets', 'post-by-type-access'); ?></div>
 				
-			<div class="submit"><input type="submit" class="button button-primary" name="info_update" value="<?php _e('Update Options') ?>" /></div>
+			<div class="submit"><input type="submit" class="button button-primary" name="info_update" value="<?php _e('Update Options', 'post-by-type-access') ?>" /></div>
 		</form>
 		
 	</fieldset>
 	
 	<fieldset style="border:1px solid #cecece;padding:15px; margin-top:25px" >
 		<legend><span style="font-size: 24px; font-weight: 700;">About</span></legend>
-		<h2><?php echo __('Posts By Type Access Version') . ' ' . PBTA_VER;?></h2>
-		<p><?php echo __('by');?> Greg Ross</p>
+		<h2><?php echo __('Posts By Type Access Version', 'post-by-type-access') . ' ' . PBTA_VER;?></h2>
+		<p><?php echo __('by', 'post-by-type-access');?> Greg Ross</p>
 		<p>&nbsp;</p>
-		<p><?php printf(__('Licenced under the %sGPL Version 2%s'), '<a href="http://www.gnu.org/licenses/gpl-2.0.html" target=_blank>', '</a>');?></p>
-		<p><?php printf(__('To find out more, please visit the %sWordPress Plugin Directory page%s or the plugin home page on %sToolStack.com%s'), '<a href="http://wordpress.org/plugins/posts-by-type-access/" target=_blank>', '</a>', '<a href="http://toolstack.com/postsbytypeaccess" target=_blank>', '</a>');?></p>
+		<p><?php printf(__('Licenced under the %sGPL Version 2%s', 'post-by-type-access'), '<a href="http://www.gnu.org/licenses/gpl-2.0.html" target=_blank>', '</a>');?></p>
+		<p><?php printf(__('To find out more, please visit the %sWordPress Plugin Directory page%s or the plugin home page on %sToolStack.com%s', 'post-by-type-access'), '<a href="http://wordpress.org/plugins/posts-by-type-access/" target=_blank>', '</a>', '<a href="http://toolstack.com/postsbytypeaccess" target=_blank>', '</a>');?></p>
 		<p>&nbsp;</p>
-		<p><?php printf(__("Don't forget to %srate and review%s it too!"), '<a href="http://wordpress.org/support/view/plugin-reviews/posts-by-type-access" target=_blank>', '</a>');?></p>
+		<p><?php printf(__('Don\'t forget to %srate and review%s it too!', 'post-by-type-access'), '<a href="http://wordpress.org/support/view/plugin-reviews/posts-by-type-access" target=_blank>', '</a>');?></p>
 </fieldset>
 </div>
 	<?php
@@ -229,6 +231,16 @@ function posts_by_type_admin()
 {
 	add_options_page( 'Posts by Type Access', 'Posts by Type Access', 'manage_options', basename( __FILE__ ), 'posts_by_type_access_admin_page');
 }
+
+// Load the internationalization code.
+function posts_by_type_init() {
+	load_plugin_textdomain('posts-by-type-access', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/');
+	__('Posts By Type Access', 'posts-by-type-access');
+	__('Adds a link to drafts, posted, scheduled items and categories under the posts, pages, and other custom post type sections in the admin menu.');
+}
+
+// Add actions
+add_action('init', 'posts_by_type_init');
 
 if ( is_admin() )
 	{
