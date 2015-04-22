@@ -1,11 +1,12 @@
 === Posts by Type Access ===
 Contributors: GregRoss
-Tags: admin
+Tags: admin, posts, categories
 Requires at least: 3.1.0
 Tested up to: 4.2
 Author URI: http://toolstack.com
 Plugin URI: http://toolstack.com/PostsByTypeAccess
 Stable tag: 2.2
+License: GPLv2
 
 Adds a link to drafts, posted, scheduled items and categories under the posts, pages, and other custom post type sections in the admin menu.
 
@@ -37,6 +38,11 @@ Version 2.1 replaced the built in WordPress function with a custom SQL query tha
 2. A screenshot of the options menu.
 
 == Changelog ==
+= 2.3 =
+* Added: i18n support.
+* Added: Spanish translation, thanks Andrew Kurtis.
+* Fixed: Cleaned up various WP_DEBUG warnings.
+
 = 2.2 =
 * Added: Option to hide categories that have no posts in them.
 
