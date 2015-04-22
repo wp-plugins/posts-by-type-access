@@ -1,0 +1,108 @@
+# Copyright (C) 2015 Posts by Type Access
+# This file is distributed under the same license as the Posts by Type Access package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Posts by Type Access 2.2\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/posts-by-type-"
+"access\n"
+"POT-Creation-Date: 2015-04-22 11:54:52+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: posts-by-type-access.php:65 posts-by-type-access.php:74
+msgid "Published"
+msgstr ""
+
+#: posts-by-type-access.php:82 posts-by-type-access.php:91
+msgid "Scheduled"
+msgstr ""
+
+#: posts-by-type-access.php:100 posts-by-type-access.php:109
+msgid "Drafts"
+msgstr ""
+
+#: posts-by-type-access.php:183
+msgid "Add published link to menus"
+msgstr ""
+
+#: posts-by-type-access.php:185
+msgid "Add scheduled link to menus"
+msgstr ""
+
+#: posts-by-type-access.php:187
+msgid "Add drafts link to menus"
+msgstr ""
+
+#: posts-by-type-access.php:195
+msgid "Add \"%s\" category link to the menus"
+msgstr ""
+
+#: posts-by-type-access.php:202
+msgid "Hide categories that do not have any posts in them."
+msgstr ""
+
+#: posts-by-type-access.php:204
+msgid "Show number of posts to the right of the menu items"
+msgstr ""
+
+#: posts-by-type-access.php:206
+msgid "Show zeros when no post items"
+msgstr ""
+
+#: posts-by-type-access.php:208
+msgid "Use square brackets"
+msgstr ""
+
+#: posts-by-type-access.php:210
+msgid "Update Options"
+msgstr ""
+
+#: posts-by-type-access.php:217
+msgid "Posts By Type Access Version"
+msgstr ""
+
+#: posts-by-type-access.php:218
+msgid "by"
+msgstr ""
+
+#: posts-by-type-access.php:220
+msgid "Licenced under the %sGPL Version 2%s"
+msgstr ""
+
+#: posts-by-type-access.php:221
+msgid ""
+"To find out more, please visit the %sWordPress Plugin Directory page%s or "
+"the plugin home page on %sToolStack.com%s"
+msgstr ""
+
+#: posts-by-type-access.php:223
+msgid "Don't forget to %srate and review%s it too!"
+msgstr ""
+
+#: posts-by-type-access.php:238
+msgid "Posts By Type Access"
+msgstr ""
+
+#. #-#-#-#-#  plugin.pot (Posts by Type Access 2.2)  #-#-#-#-#
+#. Description of the plugin/theme
+#: posts-by-type-access.php:239
+msgid ""
+"Adds a link to drafts, posted, scheduled items and categories under the "
+"posts, pages, and other custom post type sections in the admin menu."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Posts by Type Access"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Greg Ross"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://toolstack.com/"
+msgstr ""
