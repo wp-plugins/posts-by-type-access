@@ -18,6 +18,10 @@ Included is a administration menu to allow for options to be set, including whic
 
 This code is released under the GPL v2, see license.txt for details.
 
+Special thanks to the translators:
+
+* Spanish - Andrew Kurtis (www.webhostinghub.com)
+
 == Installation ==
 
 1. Extract the archive file into your plugins directory in the posts-by-type-access folder.
