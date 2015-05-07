@@ -5,7 +5,7 @@ Requires at least: 3.1.0
 Tested up to: 4.2
 Author URI: http://toolstack.com
 Plugin URI: http://toolstack.com/PostsByTypeAccess
-Stable tag: 2.2
+Stable tag: 2.3
 License: GPLv2
 
 Adds a link to drafts, posted, scheduled items and categories under the posts, pages, and other custom post type sections in the admin menu.
