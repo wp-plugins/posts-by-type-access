@@ -43,31 +43,38 @@ Version 2.1 replaced the built in WordPress function with a custom SQL query tha
 
 == Changelog ==
 = 2.3 =
+* Release date: May 7, 2015
 * Added: i18n support.
 * Added: Spanish translation, thanks Andrew Kurtis.
 * Fixed: Cleaned up various WP_DEBUG warnings.
 
 = 2.2 =
+* Release date: December 12, 2014
 * Added: Option to hide categories that have no posts in them.
 
 = 2.1 =
+* Release date:  December 12, 2014
 * Updated: Replaced built in WordPress Category article counts with custom SQL code that provides correct counts.
 
 = 2.0 =
+* Release date: September 10, 2014
 * Added: Support for categories.
 * Updated: Screen shots.
 
 = 1.2 =
+* Release date: February 17, 2014
 * Added: Square bracket option for post count.
 * Updated: Minor visual tweaks to the options page.
 * Updated: Screen shots.
 * Updated: Replaced deprecated use of numeric access type.
 
 = 1.1 =
+* Release date: April 16, 2012
 * Minor update to include a notice that settings have been saved.
 * Updated version requirements to WordPress 3.1 after testing.
 
 = 1.0 =
+* Release date: January 6, 2012
 * Initial release.
 
 == Upgrade Notice ==
