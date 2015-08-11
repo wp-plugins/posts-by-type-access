@@ -2,7 +2,7 @@
 Contributors: GregRoss
 Tags: admin, posts, categories
 Requires at least: 3.1.0
-Tested up to: 4.2
+Tested up to: 4.3
 Author URI: http://toolstack.com
 Plugin URI: http://toolstack.com/PostsByTypeAccess
 Stable tag: 2.3
