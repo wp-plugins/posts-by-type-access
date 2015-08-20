@@ -46,7 +46,7 @@ function posts_by_type_access()
 		update_option( 'posts_by_type_access', $options );
 		}
 
-	if( $options['square'] == 1 ) { $brackets = array( 'open' => '[', 'close' => ']' ); }
+	if( array_key_exists( 'square', $options ) && $options['square'] == 1 ) { $brackets = array( 'open' => '[', 'close' => ']' ); }
 		
 	foreach( $post_types as $post_type ) 
 		{
